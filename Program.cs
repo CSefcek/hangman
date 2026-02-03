@@ -103,6 +103,7 @@ char[] blanksArray = blanks.ToCharArray();
 Console.WriteLine(blanks);
 
 int attemptsLeft = hangman.Length;
+int asciiCounter = 0;
 
 
 while (true)
@@ -110,7 +111,17 @@ while (true)
     Console.WriteLine("Guess a letter!");
     char guess = Convert.ToChar(Console.ReadLine());
     attemptsLeft--;
-    if (attemptsLeft == 0) break;
+    if (attemptsLeft == 0)
+    {
+        Console.WriteLine(wordToBeGuessed);
+        break;
+    }
+
+    Console.WriteLine();
+    Console.WriteLine(hangman[asciiCounter]);
+    Console.WriteLine();
+    
+
 
     for (int index = 0; index < wordToBeGuessedArray.Length; index++)
     {
@@ -121,15 +132,25 @@ while (true)
                 if (index == index2)
                 {
                     blanksArray[index2] = guess;
-                    Console.WriteLine($"I'm here at index {index} and should fill {index2}!");
+                    Console.WriteLine($"New letter discovered at index {index}!");
+                    break;
                 }
             }
         }
-        else
+        else if (guess != wordToBeGuessedArray[index])
         {
             continue;
         }
+        
+        Console.WriteLine();
         Console.WriteLine(blanksArray);
+        Console.WriteLine();
+        if (asciiCounter < hangman.Length - 1)
+        {
+            asciiCounter++;
+        }
     }
+
+   
 }
 Console.WriteLine(blanksArray);
