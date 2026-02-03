@@ -102,11 +102,15 @@ string blanks = new string('_', wordLength);
 char[] blanksArray = blanks.ToCharArray();
 Console.WriteLine(blanks);
 
+int attemptsLeft = hangman.Length;
+
 
 while (true)
 {
     Console.WriteLine("Guess a letter!");
     char guess = Convert.ToChar(Console.ReadLine());
+    attemptsLeft--;
+    if (attemptsLeft == 0) break;
 
     for (int index = 0; index < wordToBeGuessedArray.Length; index++)
     {
@@ -121,7 +125,11 @@ while (true)
                 }
             }
         }
+        else
+        {
+            continue;
+        }
+        Console.WriteLine(blanksArray);
     }
 }
-blanks = Convert.ToString(blanksArray);
-Console.WriteLine(blanks);
+Console.WriteLine(blanksArray);
