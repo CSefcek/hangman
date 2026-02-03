@@ -99,6 +99,7 @@ char[] wordToBeGuessedArray = wordToBeGuessed.ToCharArray();
 
 
 string blanks = new string('_', wordLength);
+char[] blanksArray = blanks.ToCharArray();
 Console.WriteLine(blanks);
 
 
@@ -111,8 +112,16 @@ while (true)
     {
         if (guess == wordToBeGuessedArray[index])
         {
-            Console.WriteLine($"I'm here at index {index}!");
+            for (int index2 = 0; index2 < blanksArray.Length; index2++)
+            {
+                if (index == index2)
+                {
+                    blanksArray[index2] = guess;
+                    Console.WriteLine($"I'm here at index {index} and should fill {index2}!");
+                }
+            }
         }
-
     }
 }
+blanks = Convert.ToString(blanksArray);
+Console.WriteLine(blanks);
