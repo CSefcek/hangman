@@ -109,7 +109,10 @@ while (true)
 
     for (int index = 0; index < wordToBeGuessedArray.Length; index++)
     {
-        Console.WriteLine(wordToBeGuessedArray[index]);
+        if (guess == wordToBeGuessedArray[index])
+        {
+            Console.WriteLine($"I'm here at index {index}!");
+        }
 
     }
-
+}
