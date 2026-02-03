@@ -107,14 +107,9 @@ while (true)
     Console.WriteLine("Guess a letter!");
     char guess = Convert.ToChar(Console.ReadLine());
 
-    foreach (char character in wordToBeGuessedArray)
+    for (int index = 0; index < wordToBeGuessedArray.Length; index++)
     {
-        Console.WriteLine(character);
+        Console.WriteLine(wordToBeGuessedArray[index]);
 
     }
 
-    //if (wordToBeGuessed.IndexOf(guess) != 0)
-    //{
-
-    //}
-}
