@@ -87,7 +87,7 @@ string[] words = new string[10]
     "arrays", 
     "recursion", 
     "boolean", 
-    "conditional", 
+    "memory", 
     "loops", 
     "methods"
 };
@@ -117,10 +117,8 @@ while (true)
         break;
     }
 
-    Console.WriteLine();
-    Console.WriteLine(hangman[asciiCounter]);
-    Console.WriteLine();
-    
+
+    bool foundAny = false; 
 
 
     for (int index = 0; index < wordToBeGuessedArray.Length; index++)
@@ -132,25 +130,24 @@ while (true)
                 if (index == index2)
                 {
                     blanksArray[index2] = guess;
+                    foundAny = true;
                     Console.WriteLine($"New letter discovered at index {index}!");
                     break;
                 }
             }
         }
-        else if (guess != wordToBeGuessedArray[index])
-        {
-            continue;
-        }
-        
-        Console.WriteLine();
-        Console.WriteLine(blanksArray);
-        Console.WriteLine();
-        if (asciiCounter < hangman.Length - 1)
-        {
-            asciiCounter++;
-        }
     }
+    Console.WriteLine();
+    Console.WriteLine(blanksArray);
+    Console.WriteLine();
+    if (!foundAny && asciiCounter < hangman.Length - 1)
+    {
+        asciiCounter++;
+    }
+    Console.WriteLine();
+    Console.WriteLine(hangman[asciiCounter]);
+    Console.WriteLine();
 
-   
+
 }
 Console.WriteLine(blanksArray);
