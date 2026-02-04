@@ -1,4 +1,5 @@
 ﻿Console.Title = "Hangman";
+Console.ForegroundColor = ConsoleColor.DarkGreen;
 Console.WriteLine("Welcome to Hangman!");
 
 string[] hangman = new string[8]
@@ -113,11 +114,16 @@ while (true)
     attemptsLeft--;
     if (attemptsLeft == 0)
     {
+        Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Game Over");
+        Console.WriteLine("The secret word was:");
         Console.WriteLine(wordToBeGuessed);
+        Console.ResetColor();
         break;
     }
 
-
+    
     bool foundAny = false; 
 
 
@@ -137,17 +143,29 @@ while (true)
             }
         }
     }
+
     Console.WriteLine();
     Console.WriteLine(blanksArray);
     Console.WriteLine();
+
     if (!foundAny && asciiCounter < hangman.Length - 1)
     {
         asciiCounter++;
     }
+
     Console.WriteLine();
     Console.WriteLine(hangman[asciiCounter]);
     Console.WriteLine();
 
+    if (new string(blanksArray) == wordToBeGuessed)
+    {
+        Console.WriteLine();
+        Console.ForegroundColor= ConsoleColor.DarkYellow;
+        Console.WriteLine("YOU WIN!");
+        Console.ResetColor();
+        Console.WriteLine();
+        break;
+    }
 
 }
-Console.WriteLine(blanksArray);
+
