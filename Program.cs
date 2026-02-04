@@ -86,7 +86,7 @@ string[] words = new string[10]
     "console", 
     "coffee", 
     "arrays", 
-    "recursion", 
+    "switches", 
     "boolean", 
     "memory", 
     "loops", 
@@ -112,16 +112,6 @@ while (true)
     Console.WriteLine("Guess a letter!");
     char guess = Convert.ToChar(Console.ReadLine());
     attemptsLeft--;
-    if (attemptsLeft == 0)
-    {
-        Console.WriteLine();
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Game Over");
-        Console.WriteLine("The secret word was:");
-        Console.WriteLine(wordToBeGuessed);
-        Console.ResetColor();
-        break;
-    }
 
     
     bool foundAny = false; 
@@ -137,7 +127,6 @@ while (true)
                 {
                     blanksArray[index2] = guess;
                     foundAny = true;
-                    Console.WriteLine($"New letter discovered at index {index}!");
                     break;
                 }
             }
@@ -164,6 +153,17 @@ while (true)
         Console.WriteLine("YOU WIN!");
         Console.ResetColor();
         Console.WriteLine();
+        break;
+    }
+
+    if (attemptsLeft == 0)
+    {
+        Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Game Over");
+        Console.WriteLine("The secret word was:");
+        Console.WriteLine(wordToBeGuessed);
+        Console.ResetColor();
         break;
     }
 
